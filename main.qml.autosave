@@ -204,6 +204,26 @@ Window {
             x: 17
             y: 220
             //z: -1
+            
+            property int hours
+            property int minutes
+            property int seconds
+        
+        
+            function timeChanged() {
+                var date = new Date();
+                hours = 0;//date.getHours();
+                minutes = 0;//date.getMinutes();
+                seconds = date.getSeconds();
+            }
+        
+            Timer {
+                interval: 100
+                repeat: true
+                running: true
+                onTriggered: timeChanged()
+            }
+            
             Image {
                 id: imBye2
                 anchors.fill: recB2
@@ -216,6 +236,13 @@ Window {
                 anchors.centerIn: recB2
                 anchors.margins: 1
                 source: "images/МЕНЮ Часы 1 страница маленькая стрелка.png"
+                
+                transform: Rotation {
+                    id: hourRotation
+                    angle: hours * 30
+                    origin.x: 5
+                    origin.y: 164
+                
             }
 
             Image {
@@ -223,6 +250,15 @@ Window {
                 anchors.centerIn: recB2
                 anchors.margins: 1
                 source: "images/МЕНЮ Часы 1 страница большая стрелка.png"
+                
+                transform: Rotation {
+                    id: minuteRotation
+                    angle: minutes * 6
+                    angle: seconds * 6
+                    origin.x: 5
+                    origin.y: 211
+                }
+                
             }
 
 
