@@ -34,6 +34,27 @@ Window {
     property real mouse_range5_width: mouse_range4_width
     property real mouse_range5_height: mouse_range4_height
 
+
+    property int hours
+    property int minutes
+    property int seconds
+
+
+    function timeChanged() {
+        var date = new Date();
+        hours = 0;//date.getHours();
+        minutes = 0;//date.getMinutes();
+        seconds = date.getSeconds();
+    }
+
+    Timer {
+        interval: 100
+        repeat: true
+        running: true
+        onTriggered: timeChanged()
+    }
+
+
     StackView {
         id: stack
         initialItem: mainView
@@ -83,6 +104,7 @@ Window {
             x: 128
             y: 44
 
+
             Image {
                 id: imBye
                 anchors.fill: recB1
@@ -90,6 +112,18 @@ Window {
                 source: (but1.pressed || but2.pressed || but3.pressed || but1_1.pressed|| but1_2.pressed)
                     ? "images/МЕНЮ Измерения 1 страница2.png"
                     : "images/МЕНЮ Измерения 1 страница.png"
+
+                Text {
+                    id: name_reuicB2
+                    x: 50
+                    y: 50
+                    text: "vova"
+
+                    color: "black"
+                    font.family: "Helvetica"
+                    font.bold: true
+                    font.pixelSize: 14
+                }
 
             }
 
@@ -204,26 +238,70 @@ Window {
             x: 17
             y: 220
             //z: -1
+
+
+
             Image {
                 id: imBye2
                 anchors.fill: recB2
                 anchors.margins: 1
                 source: "images/МЕНЮ Часы 1 страница.png"
+                Text {
+                    id: name_reuicB
+                    //x: 50
+                    //y: 50
+                    //z: 1
+                    anchors.centerIn: imBye2
+                    color: "black"
+                    //font.family: "Helvetica"
+                    //font.bold: true
+                    //font.pixelSize: 14
+                }
+
             }
+
+
 
             Image {
                 id: imArrow1
-                anchors.centerIn: recB2
-                anchors.margins: 1
+                x: 117
+                y: 75
+                //width: 32
+                //height: 50
+                width: 21
+                height: 33
                 source: "images/МЕНЮ Часы 1 страница маленькая стрелка.png"
+
+                transform: Rotation {
+                    id: minuteRotation
+                    //angle: minutes * 6
+                    angle: seconds * 6
+                    origin.x: 5
+                    origin.y: 30
+                }
             }
 
             Image {
                 id: imArrow2
-                anchors.centerIn: recB2
-                anchors.margins: 1
+                x: 117
+                y: 73
+                //width: 57
+                //height: 54
+                width: 38
+                height: 36
+
                 source: "images/МЕНЮ Часы 1 страница большая стрелка.png"
+
+                transform: Rotation {
+                    id: hourRotation
+                    //angle: hours * 30
+                    angle: seconds * 6
+                    origin.x: 5
+                    origin.y: 30
+                }
             }
+
+
 
 
 /*
