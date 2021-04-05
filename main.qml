@@ -114,15 +114,14 @@ Window {
                     : "images/МЕНЮ Измерения 1 страница.png"
 
                 Text {
-                    id: name_reuicB2
-                    x: 50
-                    y: 50
-                    text: "vova"
-
-                    color: "black"
+                    id: nameButton1
+                    x: 70
+                    y: 145
+                    text: qsTr("ИЗМЕРЕНИЕ")
+                    color: "#A84A84"
                     font.family: "Helvetica"
                     font.bold: true
-                    font.pixelSize: 14
+                    font.pixelSize: 17
                 }
 
             }
@@ -246,16 +245,14 @@ Window {
                 anchors.fill: recB2
                 anchors.margins: 1
                 source: "images/МЕНЮ Часы 1 страница.png"
-                Text {
-                    id: name_reuicB
-                    //x: 50
-                    //y: 50
-                    //z: 1
-                    anchors.centerIn: imBye2
-                    color: "black"
-                    //font.family: "Helvetica"
-                    //font.bold: true
-                    //font.pixelSize: 14
+
+                Rectangle {
+                    x: 113
+                    y: 96
+                    color: "#818282"
+                    width: 14
+                    height: 14
+                    radius: 7
                 }
 
             }
@@ -284,7 +281,7 @@ Window {
             Image {
                 id: imArrow2
                 x: 117
-                y: 73
+                y: 75
                 //width: 57
                 //height: 54
                 width: 38
@@ -411,6 +408,17 @@ Window {
                     ? "images/МЕНЮ Результаты 1 страница2.png"
                     : "images/МЕНЮ Результаты 1 страница.png"
 
+                Text {
+                    id: nameButton3
+                    x: 65
+                    y: 143
+                    text: qsTr("РЕЗУЛЬТАТЫ")
+                    color: "#5F9ECE"
+                    font.family: "Helvetica"
+                    font.bold: true
+                    font.pixelSize: 17
+                }
+
             }
 
             Rectangle {
@@ -526,6 +534,17 @@ Window {
                 source: (but10.pressed || but11.pressed || but12.pressed || but4_1.pressed|| but4_2.pressed)
                     ? "images/МЕНЮ Контроль качества 1 страница2.png"
                     : "images/МЕНЮ Контроль качества 1 страница.png"
+
+                Text {
+                    id: nameButton4
+                    x: 78
+                    y: 130
+                    text: qsTr("КОНТРОЛЬ<br>КАЧЕСТВА")
+                    color: "#9A8DCC"
+                    font.family: "Helvetica"
+                    font.bold: true
+                    font.pixelSize: 17
+                }
 
             }
 
@@ -643,6 +662,28 @@ Window {
                     ? "images/МЕНЮ Разогрев 1 страница2.png"
                     : "images/МЕНЮ Разогрев 1 страница.png"
 
+                Text {
+                    id: nameButton5
+                    x: 78
+                    y: 130
+                    text: qsTr("РАЗОГРЕВ")
+                    color: "#979A9B"
+                    font.family: "Helvetica"
+                    font.bold: true
+                    font.pixelSize: 17
+                }
+
+                Text {
+                    id: textTemperature
+                    x: 90
+                    y: 150
+                    text: "-0.8 °C"
+                    color: "#979A9B"
+                    font.family: "Helvetica"
+                    font.bold: true
+                    font.pixelSize: 17
+                }
+
             }
 
             Rectangle {
@@ -758,6 +799,17 @@ Window {
                 source: (but16.pressed || but17.pressed || but18.pressed || but6_1.pressed|| but6_2.pressed)
                     ? "images/МЕНЮ Ошибка 1 страница2.png"
                     : "images/МЕНЮ Ошибка 1 страница.png"
+
+                Text {
+                    id: nameButton6
+                    x: 80
+                    y: 140
+                    text: qsTr("ОШИБКА")
+                    color: "#979A9B"
+                    font.family: "Helvetica"
+                    font.bold: true
+                    font.pixelSize: 17
+                }
             }
 
             Rectangle {
@@ -874,6 +926,16 @@ Window {
                     ? "images/МЕНЮ Служебные 1 страница2.png"
                     : "images/МЕНЮ Служебные 1 страница.png"
 
+                Text {
+                    id: nameButton7
+                    x: 67
+                    y: 145
+                    text: qsTr("СЛУЖЕБНЫЕ")
+                    color: "#66B2CC"
+                    font.family: "Helvetica"
+                    font.bold: true
+                    font.pixelSize: 17
+                }
             }
 
             Rectangle {
@@ -989,6 +1051,29 @@ Window {
                 source: (but22.pressed || but23.pressed || but24.pressed || but8_1.pressed|| but8_2.pressed)
                     ? "images/МЕНЮ Калибровка 1 страница2.png"
                     : "images/МЕНЮ Калибровка 1 страница.png"
+
+                Text {
+                    id: nameButton8
+                    x: 80
+                    y: 140
+                    text: qsTr("КАЛИБРОВКА")
+                    color: "#979A9B"
+                    font.family: "Helvetica"
+                    font.bold: true
+                    font.pixelSize: 17
+                }
+
+                property string timeCalibration: "00:00"
+                Text {
+                    id: textTime
+                    x: 80
+                    y: 140
+                    text: timeCalibration
+                    color: "#979A9B"
+                    font.family: "Helvetica"
+                    font.bold: true
+                    font.pixelSize: 17
+                }
             }
 
             Rectangle {
