@@ -43,7 +43,7 @@ Window {
     function timeChanged() {
         var date = new Date();
         hours = 0;//date.getHours();
-        minutes = 0;//date.getMinutes();
+        minutes = date.getMinutes();
         seconds = date.getSeconds();
     }
 
@@ -238,8 +238,6 @@ Window {
             y: 220
             //z: -1
 
-
-
             Image {
                 id: imBye2
                 anchors.fill: recB2
@@ -247,7 +245,7 @@ Window {
                 source: "images/МЕНЮ Часы 1 страница.png"
 
                 Rectangle {
-                    x: 113
+                    x: 115
                     y: 96
                     color: "#818282"
                     width: 14
@@ -257,11 +255,9 @@ Window {
 
             }
 
-
-
             Image {
                 id: imArrow1
-                x: 117
+                x: 118
                 y: 75
                 //width: 32
                 //height: 50
@@ -270,9 +266,9 @@ Window {
                 source: "images/МЕНЮ Часы 1 страница маленькая стрелка.png"
 
                 transform: Rotation {
-                    id: minuteRotation
-                    //angle: minutes * 6
-                    angle: seconds * 6
+                    id: hourRotation
+                    //angle: (hours * 30) - 29
+                    angle: (minutes * 6) - 29
                     origin.x: 5
                     origin.y: 30
                 }
@@ -280,7 +276,7 @@ Window {
 
             Image {
                 id: imArrow2
-                x: 117
+                x: 118
                 y: 75
                 //width: 57
                 //height: 54
@@ -290,9 +286,9 @@ Window {
                 source: "images/МЕНЮ Часы 1 страница большая стрелка.png"
 
                 transform: Rotation {
-                    id: hourRotation
-                    //angle: hours * 30
-                    angle: seconds * 6
+                    id: minuteRotation
+                    //angle: (minutes * 6) - 49
+                    angle: (seconds * 6) - 49
                     origin.x: 5
                     origin.y: 30
                 }
