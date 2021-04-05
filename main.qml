@@ -675,7 +675,7 @@ Window {
 
                 Text {
                     id: textTemperature
-                    x: 90
+                    x: 92
                     y: 150
                     text: "-0.8 °C"
                     color: "#979A9B"
@@ -1054,8 +1054,8 @@ Window {
 
                 Text {
                     id: nameButton8
-                    x: 80
-                    y: 140
+                    x: 65
+                    y: 135
                     text: qsTr("КАЛИБРОВКА")
                     color: "#979A9B"
                     font.family: "Helvetica"
@@ -1063,12 +1063,12 @@ Window {
                     font.pixelSize: 17
                 }
 
-                property string timeCalibration: "00:00"
+
                 Text {
                     id: textTime
-                    x: 80
-                    y: 140
-                    text: timeCalibration
+                    x: 98
+                    y: 155
+                    text: "00:00"
                     color: "#979A9B"
                     font.family: "Helvetica"
                     font.bold: true
@@ -1171,6 +1171,61 @@ Window {
                 }
             }
 
+        }
+
+        Rectangle {
+            id: recB9
+            width: buttons_width / 2
+            height: buttons_height / 2
+            color: "transparent"
+            //border.color: "black"
+            x: 360
+            y: 127
+            //z: -1
+
+            Image {
+                id: imBye9
+                anchors.fill: recB9
+                anchors.margins: 1
+                source: "images/МЕНЮ пустой шестиугольник 1 страница.png"
+            }
+
+        }
+
+        Rectangle {
+            id: recB10
+            width: buttons_width / 4
+            height: buttons_height / 4
+            color: "transparent"
+            //border.color: "black"
+            x: 80
+            y: 170
+            //z: -1
+
+            Image {
+                id: imBye10
+                anchors.fill: recB10
+                anchors.margins: 1
+                source: "images/МЕНЮ пустой шестиугольник 1 страница.png"
+            }
+        }
+
+        Rectangle {
+            id: recB11
+            width: buttons_width / 2
+            height: buttons_height / 2
+            color: "transparent"
+            //border.color: "black"
+            x: 360
+            y: 779
+            //z: -1
+
+            Image {
+                id: imBye11
+                anchors.fill: recB11
+                anchors.margins: 1
+                source: "images/МЕНЮ пустой шестиугольник 1 страница.png"
+            }
         }
     }
 
