@@ -3,8 +3,10 @@ import QtQuick.Window 2.2
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.4
+import QtGraphicalEffects 1.0
 
 Window {
+    id: winn
     visible: true
     //visibility: Window.FullScreen //для малинки
     width: 600 //для пк
@@ -13,6 +15,9 @@ Window {
 
     property real buttons_width: 230
     property real buttons_height: 240
+    //property real buttons_width: 170
+    //property real buttons_height: 180
+
     property real mouse_range1_x: 22
     property real mouse_range1_y: 52
     property real mouse_range1_width: 200
@@ -42,9 +47,22 @@ Window {
 
     function timeChanged() {
         var date = new Date();
-        hours = 0;//date.getHours();
+        hours = date.getHours();
         minutes = date.getMinutes();
         seconds = date.getSeconds();
+    }
+
+    function stateRecB5(){
+        if(but13.pressed || but14.pressed || but15.pressed || but5_1.pressed|| but5_2.pressed){
+            imBye5.source = "images/МЕНЮ Разогрев 1 страница2.png";
+            nameButton5.color = "white";
+            textTemperature.color = "white";
+        }
+        else {
+            imBye5.source = "images/МЕНЮ Разогрев 1 страница.png";
+            nameButton5.color = "white";
+            textTemperature.color = "white";
+        }
     }
 
     Timer {
@@ -71,8 +89,6 @@ Window {
                 PropertyAnimation {
                     target: enterItem
                     property: "scale"
-
-
                     from: 0
                     to: 1
 
@@ -81,7 +97,6 @@ Window {
                 PropertyAnimation {
                     target: exitItem
                     property: "scale"
-
                     from: 1
                     to: 0
 
@@ -118,11 +133,22 @@ Window {
                     x: 70
                     y: 145
                     text: qsTr("ИЗМЕРЕНИЕ")
-                    color: "#A84A84"
+                    color: (but1.pressed || but2.pressed || but3.pressed || but1_1.pressed|| but1_2.pressed)
+                    ? "white"
+                    : "#A84A84"
                     font.family: "Helvetica"
                     font.bold: true
                     font.pixelSize: 17
                 }
+
+                DropShadow {
+                      anchors.fill: nameButton1
+                      source: nameButton1
+                      horizontalOffset: 2
+                      color: "white"
+                      radius: 0
+                      samples: 3
+                  }
 
             }
 
@@ -245,9 +271,10 @@ Window {
                 source: "images/МЕНЮ Часы 1 страница.png"
 
                 Rectangle {
-                    x: 115
+                    x: 114
                     y: 96
-                    color: "#818282"
+                    //color: "#818282"
+                    color: "transparent"
                     width: 14
                     height: 14
                     radius: 7
@@ -258,28 +285,24 @@ Window {
             Image {
                 id: imArrow1
                 x: 118
-                y: 75
-                //width: 32
-                //height: 50
+                y: 76
                 width: 21
                 height: 33
                 source: "images/МЕНЮ Часы 1 страница маленькая стрелка.png"
 
                 transform: Rotation {
                     id: hourRotation
-                    //angle: (hours * 30) - 29
-                    angle: (minutes * 6) - 29
-                    origin.x: 5
-                    origin.y: 30
+                    angle: (hours * 30) - 29
+                    //angle: (minutes * 6) - 29
+                    origin.x: 4
+                    origin.y: 28
                 }
             }
 
             Image {
                 id: imArrow2
                 x: 118
-                y: 75
-                //width: 57
-                //height: 54
+                y: 73
                 width: 38
                 height: 36
 
@@ -287,10 +310,28 @@ Window {
 
                 transform: Rotation {
                     id: minuteRotation
-                    //angle: (minutes * 6) - 49
-                    angle: (seconds * 6) - 49
-                    origin.x: 5
-                    origin.y: 30
+                    angle: (minutes * 6) - 48
+                    //angle: (seconds * 6) - 48
+                    origin.x: 4
+                    origin.y: 31
+                }
+            }
+
+            Image {
+                id: imArrow3
+                x: 120
+                y: 69
+                width: 20
+                height: 40
+
+                source: "images/МЕНЮ Часы 1 страница большая стрелка.png"
+
+                transform: Rotation {
+                    id: secondRotation
+                    //angle: (seconds * 6) - 27
+                    angle: (seconds * 6) - 27
+                    origin.x: 2
+                    origin.y: 35
                 }
             }
 
@@ -409,7 +450,9 @@ Window {
                     x: 65
                     y: 143
                     text: qsTr("РЕЗУЛЬТАТЫ")
-                    color: "#5F9ECE"
+                    color: (but7.pressed || but8.pressed || but9.pressed || but3_1.pressed|| but3_2.pressed)
+                    ? "white"
+                    : "#5F9ECE"
                     font.family: "Helvetica"
                     font.bold: true
                     font.pixelSize: 17
@@ -536,7 +579,9 @@ Window {
                     x: 78
                     y: 130
                     text: qsTr("КОНТРОЛЬ<br>КАЧЕСТВА")
-                    color: "#9A8DCC"
+                    color: (but10.pressed || but11.pressed || but12.pressed || but4_1.pressed|| but4_2.pressed)
+                    ? "white"
+                    : "#9A8DCC"
                     font.family: "Helvetica"
                     font.bold: true
                     font.pixelSize: 17
@@ -640,7 +685,7 @@ Window {
             }
 
         }
-
+/*
         Rectangle {
             id: recB5
             width: buttons_width
@@ -654,6 +699,20 @@ Window {
                 id: imBye5
                 anchors.fill: recB5
                 anchors.margins: 1
+
+                source: {
+                    if(but13.pressed || but14.pressed || but15.pressed || but5_1.pressed|| but5_2.pressed){
+                        return "images/МЕНЮ Разогрев 1 страница2.png"
+                    }
+                    else {
+                        if(0) return "images/МЕНЮ Разогрев 1 страница3.png"
+                        else return "images/МЕНЮ Разогрев 1 страница.png"
+                    }
+                }
+
+
+
+
                 source: (but13.pressed || but14.pressed || but15.pressed || but5_1.pressed|| but5_2.pressed)
                     ? "images/МЕНЮ Разогрев 1 страница2.png"
                     : "images/МЕНЮ Разогрев 1 страница.png"
@@ -663,6 +722,15 @@ Window {
                     x: 78
                     y: 130
                     text: qsTr("РАЗОГРЕВ")
+                    color: {
+                        if(but13.pressed || but14.pressed || but15.pressed || but5_1.pressed || but5_2.pressed){
+                            return "white"
+                        }
+                        else {
+                            if(0) return "images/МЕНЮ Разогрев 1 страница3.png"
+                            else return "images/МЕНЮ Разогрев 1 страница.png"
+                        }
+
                     color: "#979A9B"
                     font.family: "Helvetica"
                     font.bold: true
@@ -778,7 +846,7 @@ Window {
             }
 
         }
-
+*/
         Rectangle {
             id: recB6
             width: buttons_width
